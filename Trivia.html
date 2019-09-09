@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Trivia</title>
+</head>
+<body>
+
+    <div id="container">
+        <h1 id="title">Trivia</h1>
+        <div>
+            <h2 class="right">Score:</h2>
+        </div>
+    <div class="columns">
+        <h2 class="center">General</h2>
+        <div id="a1" class="boxes">
+            <h3 class="cushion">100</h3>
+        </div>
+        <div id="a2" class="boxes">
+            <h3 class="cushion">200</h3>
+        </div>
+        <div id="a3" class="boxes">
+            <h3 class="cushion">300</h3>
+        </div>
+    </div>
+</div>
+
+    <script>
+    $(document).ready(function(){
+    $.get("https://opentdb.com/api.php?amount=9&category=20&difficulty=easy&type=multiple", function(data){
+        general = data.results;
+    })
+    })
+    $("#a1").click(function(){
+        $("#a1").html("<div class='center'><p>"+general[0].question+"</p><br><p>"+general[0].incorrect_answers[0]+"</p><p>"+general[0].incorrect_answers[1]+"</p><p>"+general[0].correct_answer+"</p><p>"+general[0].incorrect_answers[2]+"</p></div>");
+    })
+    $("#a2").click(function(){
+        $("#a2").html("<div class='center'><p>"+general[1].question+"</p><br><p>"+general[1].incorrect_answers[0]+"</p><p>"+general[1].incorrect_answers[1]+"</p><p>"+general[1].correct_answer+"</p><p>"+general[1].incorrect_answers[2]+"</p></div>");
+    })
+    $("#a3").click(function(){
+        $("#a3").html("<div class='center'><p>"+general[2].question+"</p><br><p>"+general[2].incorrect_answers[0]+"</p><p>"+general[2].incorrect_answers[1]+"</p><p>"+general[2].correct_answer+"</p><p>"+general[2].incorrect_answers[2]+"</p></div>");
+    })
+    
+    </script>
+        
+
+    
+</body>
+</html>
+
+
+<style>
+p {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    width: 90rem;
+    height: 56rem;
+    margin: 1rem auto;
+    text-align: center;
+    border: 1px solid black;   
+}
+#title {
+    text-align: center;
+}
+.columns {
+    display: inline-block;
+    vertical-align: top;
+    width: 13rem;
+    height: 50rem;
+    text-align: center;
+}
+.boxes {
+    width: 12rem;
+    height: 11rem;
+    padding: 2px;
+    margin: 3px auto;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.right {
+    float: right;
+}
+.cushion {
+    margin: 5.2rem 5rem;
+}
+.center {
+    text-align: center;
+}
+
+</style>
